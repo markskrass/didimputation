@@ -21,7 +21,7 @@ sparse_model_matrix = function(data, fixest) {
 			glue::glue("factor({var}){names}")
 		})
 
-
+		alt_vars = c(glue::glue("factor({gname})"),glue::glue("factor({tname})"))
 		Z = cbind(Z, Z_fixef[, unlist(select)])
 	}
 
