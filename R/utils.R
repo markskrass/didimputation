@@ -12,6 +12,7 @@ sparse_model_matrix = function(data, fixest, gname, tname) {
 		)
 
 		Z_fixef = Matrix::sparse.model.matrix(frmla, data = data)
+		print(head(Z_fixef))
 
 		temp = fixest::fixef(fixest)
 		select =	lapply(names(temp), function(var){
