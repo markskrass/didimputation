@@ -12,7 +12,7 @@ sparse_model_matrix = function(data, fixest, gname, tname) {
 		)
 
 		Z_fixef = Matrix::sparse.model.matrix(frmla, data = data)
-		print(colnames(Z_fixef))
+		#print(colnames(Z_fixef))
 
 		temp = fixest::fixef(fixest)
 		select =	lapply(names(temp), function(var){
@@ -23,10 +23,10 @@ sparse_model_matrix = function(data, fixest, gname, tname) {
 		})
 
 		#alt_vars = c(glue::glue("factor({gname})"),glue::glue("factor({tname})"))
-		print(unlist(select))
+		#print(unlist(select))
 		select <- unlist(select)
 		select <- select[select %in% colnames(Z_fixef)]
-		Z = cbind(Z, Z_fixef[, unlist(select)])
+		Z = cbind(Z, Z_fixef[, select])
 	}
 
 	return(Z)
