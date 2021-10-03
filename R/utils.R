@@ -24,6 +24,8 @@ sparse_model_matrix = function(data, fixest, gname, tname) {
 
 		#alt_vars = c(glue::glue("factor({gname})"),glue::glue("factor({tname})"))
 		print(unlist(select))
+		select <- unlist(select)
+		select <- select[select %in% colnames(Z_fixef)]
 		Z = cbind(Z, Z_fixef[, unlist(select)])
 	}
 
