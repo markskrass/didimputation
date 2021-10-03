@@ -1,5 +1,5 @@
 # Make a sparse_model_matrix for fixest estimate. This only keeps the variables that are not removed from `fixest::feols`
-sparse_model_matrix = function(data, fixest) {
+sparse_model_matrix = function(data, fixest, gname, tname) {
 	Z = NULL
 
 	# Coefficients
