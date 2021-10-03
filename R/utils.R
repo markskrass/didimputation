@@ -22,7 +22,7 @@ sparse_model_matrix = function(data, fixest, gname, tname) {
 		})
 
 		alt_vars = c(glue::glue("factor({gname})"),glue::glue("factor({tname})"))
-		Z = cbind(Z, Z_fixef[, unlist(select)])
+		Z = cbind(Z, Z_fixef[, alt_vars])
 	}
 
 	return(Z)
