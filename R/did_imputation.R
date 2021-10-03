@@ -167,7 +167,7 @@ did_imputation = function(data, yname, gname, tname, idname, first_stage = NULL,
 	# Standard Errors --------------------------------------------------------------
 
 	# Create Zs
-	Z = sparse_model_matrix(data, first_stage_est)
+	Z = sparse_model_matrix(data, first_stage_est, gname=gname, tname=tname)
 
 	# Equation (6) of Borusyak et. al. 2021
 	# - Z (Z_0' Z_0)^{-1} Z_1' wtr_1
