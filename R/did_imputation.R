@@ -65,11 +65,11 @@
 #'
 did_imputation = function(data, yname, gname, tname, idname, first_stage = NULL,
 						  weights = NULL, wtr = NULL, horizon = NULL,
-						  pretrends = NULL){
+						  pretrends = NULL, return_df = FALSE){
 
 
 	# Set-up Parameters ------------------------------------------------------------
-
+	orig.df = data
 	data = as.data.frame(data)
 
 	# Extract vars from formula
@@ -271,6 +271,14 @@ did_imputation = function(data, yname, gname, tname, idname, first_stage = NULL,
 
 		out = dplyr::bind_rows(pre_out, out)
 	}
+	if(return_df){
+		orig.df$centered_tau <- data$zz000tau_centered
+		orig.df$tau <- data$zz000adj
+		orig.df$est.v <- data$zz000v
+		return(list("out" = out, "data" = orig.df))
+
+		}
+		
 
 	return(out)
 }
