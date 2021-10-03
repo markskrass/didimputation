@@ -16,7 +16,7 @@ sparse_model_matrix = function(data, fixest, gname, tname) {
 
 		temp = fixest::fixef(fixest)
 		select =	lapply(names(temp), function(var){
-			names = names(temp[[var]])
+			names = as.character(names(temp[[var]]))
 			names = names[temp[[var]] != 0]
 
 			glue::glue("factor({var}){names}")
